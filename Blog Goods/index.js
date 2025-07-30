@@ -1,23 +1,21 @@
-import express from "express"
-import dotenv from "dotenv"
-import routeProduto  from "./src/modules/produto/routes/produto.route.js"
+import express from 'express';
+import routeUser from "./src/modules/user/routes/produto.route.js";
+import dotenv from 'dotenv';
 
-import "./src/config/database.js"
+import './src/config/database.js';
 
 dotenv.config()
 
-const app = express()
+const app = express();
 const port = process.env.PORTA
 
-app.use(express.json())
-app.use('/api',routeProduto)
+app.use(express.json());
+app.use(routeUser)
 
-
-app.listen(port, () => {
+app.listen(port, async () => {
     try {
-        console.log(`Servidor rodando na porta ${port}`)
+        console.log(`Servidor rodando na porta ${port}`);
     } catch (error) {
-        console.log("Erro ao subir server:",error.message)
+        console.log('Erro ao abrir o servidor', error = error.message)
     }
-    
-})
+});
