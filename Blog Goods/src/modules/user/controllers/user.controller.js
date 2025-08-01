@@ -1,6 +1,5 @@
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcryptjs';
 import UserModel from "../models/user.model.js";
-
 
 class UserController {
     static async cadastrar(req, res) {
@@ -9,8 +8,10 @@ class UserController {
             if(!nome || !email || !senha || !foto_perfil) {
                 return res.status(400).json({ message: 'Erro do cliente.' })
             }
+
             const salt = await bcrypt.genSaltSync(10);
             const hash = await bcrypt.hash(senha, salt)
+
             const user = await UserModel.create({ nome, email, senha:hash, foto_perfil })
             res.status(201).json({ message: 'Usuário criado com sucesso!', user: user })
 
@@ -38,7 +39,11 @@ class UserController {
 
     static async ListarTodos (req, res) {
         try {
-            const usuarios = await UserModel.findAll()
+            const usuarios = await UserModel.findAll({
+                attributes: {
+                    exclude: ["senha"]
+                }
+            })
             if (usuarios.length === 0) {
                 res.status(200).json({ message: 'Nenhum usuário encontrado.' })
             }

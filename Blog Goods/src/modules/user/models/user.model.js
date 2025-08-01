@@ -59,9 +59,10 @@ const UserModel = sequelize.define(
         },
 
     },
+
     {
         tableName: 'User',
-        createddAt: 'Created_at',
+        createdAt: 'Created_at',
         updatedAt: 'Updated_at'
     }
 );
