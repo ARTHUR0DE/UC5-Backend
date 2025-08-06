@@ -1,0 +1,53 @@
+### Listar todos os usuários
+GET http://localhost:3001/api/usuarios
+Accept: application/json
+
+###
+
+### Cadastrar novo usuário
+POST http://localhost:3001/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "João2 Silva",
+  "email": "joao2.silva@email.com",
+  "senha": "senha1234",
+  "foto_perfil": "https://exemplo.com/foto.jpg"
+}
+
+###
+
+### Deletar todos os usuários
+DELETE http://localhost:3000/usuarios
+Accept: application/json
+
+###
+
+### Contar total de usuários
+GET http://localhost:3000/usuarios/total
+Accept: application/json
+
+###
+
+### Listar usuário por ID
+GET http://localhost:3000/usuarios/{{id}}
+Accept: application/json
+
+###
+
+### Atualizar usuário por ID
+PATCH http://localhost:3000/usuarios/{{id}}
+Content-Type: application/json
+
+{
+  "nome": "João Atualizado",
+  "email": "joao.atualizado@email.com",
+  "senha": "novaSenha1234",
+  "foto_perfil": "https://exemplo.com/nova-foto.jpg"
+}
+
+###
+
+### Deletar usuário por ID
+DELETE http://localhost:3000/usuarios/{{id}}
+Accept: application/json
